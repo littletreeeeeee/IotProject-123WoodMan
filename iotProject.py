@@ -11,6 +11,8 @@ gpio.setwarnings(False)
 IsStart=True
 IsFirstTime=True
 IsRestart=True
+isBreak=False
+
 grabCount=0
 pin = [37, 31, 33, 35]
 for i in range(4):
@@ -36,6 +38,8 @@ def pressBtn():
         print("Press!! Btn 2!!"+str(IsStart))
     else :
         print("Game End")
+        global grabCount
+        grabCount=0
         IsRestart=True;
         IsStart=True;
         
@@ -46,16 +50,38 @@ btn.when_pressed=pressBtn
 
 async def forward(steps, delay):
     print('forward2')
+    global isBreak
     for i in range(steps):
+        if isBreak==True:
+            break
         for step in forward_sq:
             set_motor(step)
             time.sleep(delay)
+            if btn.is_pressed:
+                global IsStart
+                IsStart=False
+                isBreak=True
+                print("btn.is_pressed")
+                playsound("win.mp3")
+                print("play win mp3")
+                break
  
 def reverse(steps, delay):
+    global isBreak
     for i in range(steps):
+        if isBreak==True:
+            break
         for step in reverse_sq:
             set_motor(step)
             time.sleep(delay)
+            if btn.is_pressed:
+                global IsStart
+                IsStart=False
+                print("btn.is_pressed")
+                playsound("win.mp3")
+                print("play win mp3")
+                isBreak=True
+                break;
             
 async def playMusic():
     playsound('123Music.mp4',0)
@@ -70,15 +96,16 @@ def set_motor(step):
  
 async def main():
     global IsFirstTime
+    global isBreak 
     await asyncio.gather(playMusic(),forward(180, 0.005))
-    startDetect()
+        
     global IsStart
+
     global grabCount
-    if IsStart==False and grabCount<5:
-        playsound("win.mp3")
-        print("play win mp3")
+    if isBreak==True and grabCount<5:
         IsFirstTime=True
     else:
+        startDetect()
         time.sleep(5);
         set_motor('0000')
         reverse(180,0.005)
@@ -115,12 +142,7 @@ def startDetect():
     
     while detect:
         start = time.time()
-
-        if btn.is_pressed:
-            global IsStart
-            IsStart=False
-            print("btn.is_pressed")
-            break
+     
         if start-startDetect >10:
             print("over 10 sec, break!")
             break
