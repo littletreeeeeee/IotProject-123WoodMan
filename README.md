@@ -368,6 +368,9 @@ btn.when_pressed=pressBtn
 
 
 ## 參考資料
+
+**步進馬達控制功能 :** *http://hophd.com/raspberry-pi-stepper-motor-control/*
+
 **按鈕功能 :**  *https://ithelp.ithome.com.tw/articles/10216027?fbclid=IwAR2xrsCke46xArizmTbNG8yDDnDJL4YDH_jGbVcE3VjrqIVt2t14NVoxdlw*
 
 **使用OpenCV所遇到問題 :**  *https://stackoverflow.com/questions/53347759/importerror-libcblas-so-3-cannot-open-shared-object-file-no-such-file-or-dire?fbclid=IwAR0x9I0QmOVqnB-SzI2biRL3mZhsBGLO4E297U4FXOjniMzwi05jhgWLYv4*
