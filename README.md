@@ -10,7 +10,7 @@
 6. 在木頭人旋轉期間，再次按下按鈕表示遊戲結束，會撥放成功音效
 
 **影片連結:**
-[木頭人遊戲-介紹影片](https://youtu.be/pkEsiSHy5-o)
+[木頭人遊戲-介紹影片](https://youtu.be/pkEsiSHy5-o),
 [木頭人遊戲-挑戰成功](https://youtu.be/asxDR7Kr3Dc), 
 [木頭人遊戲-挑戰失敗](https://youtube.com/shorts/hW-8wiIlAPU)
 
